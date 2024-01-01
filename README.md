@@ -1,4 +1,4 @@
-# Arduino PWM LED Control
+# Bosch Test Bench using PWM LED Control
 
 ## Overview
 This repository contains a simple Arduino project for controlling the brightness of an LED using Pulse Width Modulation (PWM). It's an excellent project for beginners to get hands-on experience with Arduino and PWM.
