@@ -2,7 +2,7 @@
 #include <avr/interrupt.h>
 
 const int ledPin = 9; // Use a pin compatible with Timer1
-volatile int pwmValue = 0;
+int dutyCycle = 128; // Set this value between 0 (0%) and 255 (100%) to control the duty cycle
 
 void setup() {
   pinMode(ledPin, OUTPUT);
@@ -25,15 +25,11 @@ ISR(TIMER1_COMPA_vect) {
   static int dutyCycleCounter = 0;
 
   dutyCycleCounter++;
-  if (dutyCycleCounter > 1000) {
+  if (dutyCycleCounter >= 1000) {
     dutyCycleCounter = 0;
-    pwmValue++;
-    if (pwmValue > 255) {
-      pwmValue = 0;
-    }
   }
 
-  if (dutyCycleCounter <= pwmValue) {
+  if (dutyCycleCounter < dutyCycle) {
     digitalWrite(ledPin, HIGH);
   } else {
     digitalWrite(ledPin, LOW);
