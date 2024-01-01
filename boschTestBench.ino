@@ -1,8 +1,10 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+// Define the duty cycle here (value between 0 and 255)
+#define DUTY_CYCLE 128
+
 const int ledPin = 9; // Use a pin compatible with Timer1
-int dutyCycle = 128; // Set this value between 0 (0%) and 255 (100%) to control the duty cycle
 
 void setup() {
   pinMode(ledPin, OUTPUT);
@@ -29,7 +31,7 @@ ISR(TIMER1_COMPA_vect) {
     dutyCycleCounter = 0;
   }
 
-  if (dutyCycleCounter < dutyCycle) {
+  if (dutyCycleCounter < DUTY_CYCLE) {
     digitalWrite(ledPin, HIGH);
   } else {
     digitalWrite(ledPin, LOW);
