@@ -3,7 +3,7 @@ name: Generate Doxygen Documentation
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 jobs:
   build:
@@ -11,10 +11,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Install Doxygen
       run: sudo apt-get install doxygen
+
     - name: Generate Documentation
-      run: doxygen ./docs/Doxyfile
+      run: doxygen Doxyfile
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
