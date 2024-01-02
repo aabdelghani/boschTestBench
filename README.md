@@ -10,7 +10,8 @@
 6. [How to Use](#how-to-use)
 7. [Code Explanation](#code-explanation)
 8. [Notes](#notes)
-9. [Side Note: Setting the Compare Match Register for 1kHz Frequency](#side-note-setting-the-compare-match-register-for-1khz-frequency)
+9. [Visual Representation](#visual-representation)
+10. [Side Note: Setting the Compare Match Register for 1kHz Frequency](#side-note-setting-the-compare-match-register-for-1khz-frequency)
 	- [Timer and Compare Match Register](#timer-and-compare-match-register)
 	- [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
 	- [2kHz Frequency](#2khz-frequency)
@@ -22,6 +23,7 @@
 ## Overview
 
 This Arduino sketch generates a Pulse Width Modulation (PWM) signal using Timer1 interrupts. It allows selecting predefined frequencies for the PWM signal, providing precise control suitable for LED dimming, motor control, and signal generation.
+
 
 ## Hardware Requirements
 
@@ -66,7 +68,9 @@ These time periods represent the duration of one complete cycle of the PWM signa
 - Frequency values and time periods are calculated based on a 16MHz clock. Adjust these values if using a different clock or prescaler.
 - The code is intended for Arduino Uno and similar AVR-based boards.
 
+## Visual Representation
 
+For a visual representation and simulation of the circuit used in this project, visit the following Tinkercad link: [Tinkercad Circuit Simulation](https://www.tinkercad.com/things/abLLm7h7TJJ-funky-juttuli/editel?sharecode=Xo09mCwedb-p-YJO-K1cbwH3dxxOUjxbuBEUPvEbV6E). This simulation provides an interactive way to understand how the components are connected and how the PWM signal affects the circuit. 
 
 ## Side Note: Setting the Compare Match Register for Several Frequencies
 
