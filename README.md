@@ -93,11 +93,11 @@ To calculate the value to load into OCR1A:
 
 2. **Calculate the Timer Count:** The formula to calculate the value to be put into the OCR1A register for a desired frequency is:
 
-   OCR1A = (Timer Clock Frequency / Desired Interrupt Frequency) - 1
+   `OCR1A = (Timer Clock Frequency / Desired Interrupt Frequency) - 1`
 
 3. **Apply the Formula:** For a 1kHz frequency with a 2MHz timer clock (after prescaling by 8), the calculation would be:
 
-   OCR1A = (2,000,000 / 1,000) - 1 = 1999
+   `OCR1A = (2,000,000 / 1,000) - 1 = 1999`
 
    
 ### 2kHz Frequency
