@@ -36,8 +36,10 @@ const int ledPin = 9; ///< PWM output pin, typically connected to an LED.
 void setup() {
   pinMode(ledPin, OUTPUT);
 
-  noInterrupts();
-  TCCR1A = 0; // Clear Timer1 Control Registers
+  noInterrupts(); // Disable interrupts while configuring Timer1.
+  
+  // Clear Timer1 Control Registers (TCCR1A and TCCR1B).
+  TCCR1A = 0;
   TCCR1B = 0;
 
   // Set compare match register value and prescaler based on the predefined frequency.
@@ -59,6 +61,7 @@ void setup() {
 
   TCCR1B |= (1 << WGM12); // Configure for CTC mode.
   TIMSK1 |= (1 << OCIE1A); // Enable Timer1 compare match interrupt.
+
   interrupts(); // Enable global interrupts.
 }
 
