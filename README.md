@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Arduino sketch is designed to generate a Pulse Width Modulation (PWM) signal using Timer1 interrupts. It features the ability to select predefined frequencies through preprocessor directives, allowing easy switching between different PWM frequencies. This method provides precise control over PWM signals, which is useful for a variety of applications including LED dimming, motor control, and signal generation.
+This Arduino sketch generates a Pulse Width Modulation (PWM) signal using Timer1 interrupts. It allows selecting predefined frequencies for the PWM signal, providing precise control suitable for LED dimming, motor control, and signal generation.
 
 ## Hardware Requirements
 
@@ -17,32 +17,36 @@ This Arduino sketch is designed to generate a Pulse Width Modulation (PWM) signa
 
 ## Configuration
 
-- **PWM Pin**: The sketch uses digital pin 9 on the Arduino for PWM output. This pin is compatible with Timer1.
-- **Predefined Frequencies**: Frequencies are predefined as macros and can be selected by changing the `FREQUENCY` definition at the top of the sketch. Current predefined frequencies include 1kHz, 2kHz, and 5kHz.
+- **PWM Pin**: The sketch uses digital pin 9 on the Arduino for PWM output, compatible with Timer1.
+- **Predefined Frequencies**: The sketch provides selectable frequencies of 1kHz, 2kHz, 5kHz, and 0.5Hz, each with a corresponding time period.
+
+## Frequency and Time Period Details
+
+- **1kHz (1,000 Hz)**: Time period = 1 millisecond (ms)
+- **2kHz (2,000 Hz)**: Time period = 0.5 milliseconds (ms)
+- **5kHz (5,000 Hz)**: Time period = 0.2 milliseconds (ms)
+- **0.5Hz**: Time period = 2,000 milliseconds (ms)
+
+These time periods represent the duration of one complete cycle of the PWM signal at each frequency.
 
 ## How to Use
 
 1. **Connect the Hardware**: Connect the LED and resistor in series between pin 9 and GND on the Arduino.
-2. **Set the Desired Frequency**: Open the sketch in the Arduino IDE and set the desired frequency by changing the `#define FREQUENCY` line to one of the predefined frequencies (e.g., `#define FREQUENCY 1kHz`).
+2. **Set the Desired Frequency**: Open the sketch in the Arduino IDE and select the desired frequency by setting the `FREQUENCY` definition at the top of the sketch (e.g., `#define FREQUENCY FREQ_1KHZ`).
 3. **Upload the Sketch**: Connect the Arduino to your computer and upload the sketch using the Arduino IDE.
-4. **Observe the PWM Signal**: Once uploaded, the connected LED will show the PWM effect at the selected frequency.
+4. **Observe the PWM Signal**: The connected LED will display the PWM effect at the selected frequency and corresponding time period.
 
 ## Code Explanation
 
-- **Timer1 Setup**: The sketch configures Timer1 in Clear Timer on Compare Match (CTC) mode. The compare match register (OCR1A) value is set based on the selected frequency. A prescaler of 8 is used to scale down the 16MHz clock.
-- **Interrupt Service Routine (ISR)**: The `TIMER1_COMPA_vect` ISR toggles the LED pin at each timer compare match, creating the PWM signal.
-- **Frequency Selection**: Use the `#define FREQUENCY` directive to select the PWM frequency. The available options are set using individual `#define` statements for each frequency.
-- **Error Handling**: If an undefined frequency is selected, the preprocessor generates a compile-time error.
+- **Timer1 Setup**: Configures Timer1 in Clear Timer on Compare Match (CTC) mode, with the compare match register (OCR1A) value set based on the selected frequency and corresponding time period.
+- **Interrupt Service Routine (ISR)**: `TIMER1_COMPA_vect` ISR toggles the LED pin at each timer compare match, creating the PWM signal.
+- **Frequency Selection**: Use `#define FREQUENCY` to select the PWM frequency. Available options and their corresponding time periods are defined at the beginning of the sketch.
 
 ## Notes
 
-- The frequency values are calculated assuming a 16MHz clock and an 8x prescaler. Adjust these values if using a different clock or prescaler.
-- This code is intended for Arduino Uno and similar AVR-based boards. Other boards may require adjustments due to different timer configurations.
+- Frequency values and time periods are calculated based on a 16MHz clock. Adjust these values if using a different clock or prescaler.
+- The code is intended for Arduino Uno and similar AVR-based boards.
 
-## Limitations
-
-- The current setup allows for basic PWM control. For more complex applications, additional modifications might be necessary.
-- The use of interrupts and timers may interfere with other time-dependent Arduino functions.
 
 ## Side Note: Setting the Compare Match Register for 1kHz Frequency
 
