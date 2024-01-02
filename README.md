@@ -14,13 +14,13 @@
 *- [Timer and Compare Match Register](#timer-and-compare-match-register)
 *- [1kHz Frequency](#1khz-frequency)
 *- [2kHz Frequency](#2khz-frequency)
-&nbsp; - [5kHz Frequency](#5khz-frequency)
-&nbsp; - [0.5Hz Frequency](#0.5hz-frequency)
-&nbsp; - [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
-&nbsp; - [2kHz Frequency](#2khz-frequency)
-&nbsp; - [5kHz Frequency](#5khz-frequency)
-&nbsp; - [0.5Hz Frequency](#0.5hz-frequency)
-&nbsp; - [What Happens at Runtime](#what-happens-at-runtime)
+- [5kHz Frequency](#5khz-frequency)
+- [0.5Hz Frequency](#0.5hz-frequency)
+- [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
+ - [2kHz Frequency](#2khz-frequency)
+ - [5kHz Frequency](#5khz-frequency)
+ - [0.5Hz Frequency](#0.5hz-frequency)
+ - [What Happens at Runtime](#what-happens-at-runtime)
 
 
 ## Overview
