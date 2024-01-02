@@ -1,5 +1,28 @@
 # Arduino PWM Generation Using Timer1 with Selectable Frequencies
 
+# Table of Contents
+
+1. [Overview](#overview)
+2. [Hardware Requirements](#hardware-requirements)
+3. [Software Requirements](#software-requirements)
+4. [Configuration](#configuration)
+5. [Frequency and Time Period Details](#frequency-and-time-period-details)
+6. [How to Use](#how-to-use)
+7. [Code Explanation](#code-explanation)
+8. [Notes](#notes)
+9. [Side Note: Setting the Compare Match Register for 1kHz Frequency](#side-note-setting-the-compare-match-register-for-1khz-frequency)
+  - [Timer and Compare Match Register](#timer-and-compare-match-register)
+  - [1kHz Frequency](#1khz-frequency)
+  - [2kHz Frequency](#2khz-frequency)
+  - [5kHz Frequency](#5khz-frequency)
+  - [0.5Hz Frequency](#0.5hz-frequency)
+  - [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
+  - [2kHz Frequency](#2khz-frequency)
+  - [5kHz Frequency](#5khz-frequency)
+  - [0.5Hz Frequency](#0.5hz-frequency)
+  - [What Happens at Runtime](#what-happens-at-runtime)
+
+
 ## Overview
 
 This Arduino sketch generates a Pulse Width Modulation (PWM) signal using Timer1 interrupts. It allows selecting predefined frequencies for the PWM signal, providing precise control suitable for LED dimming, motor control, and signal generation.
