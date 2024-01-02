@@ -128,3 +128,7 @@ In summary, setting the compare match register to the appropriate value based on
 
 The complete Doxygen-generated documentation for this project can be found at [BoschTestBench Documentation](https://aabdelghani.github.io/boschTestBench/). This documentation provides detailed insights into the structure and functionality of the code, making it easier for developers to understand and contribute to the project.
 
+## Automated Documentation
+
+project uses GitHub Actions to automate the generation of Doxygen documentation. Whenever changes are pushed to the `main` branch, the documentation is automatically updated and deployed to the `gh-pages` branch. This ensures that our documentation is always current and can be easily accessed through our GitHub Pages site.
+
