@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['what_20happens_20at_20runtime_0',['What Happens at Runtime',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html#autotoc_md12',1,'']]],
-  ['with_20selectable_20frequencies_1',['Arduino PWM Generation Using Timer1 with Selectable Frequencies',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html',1,'']]]
+  ['selectable_20frequencies_0',['Arduino PWM Generation Using Timer1 with Selectable Frequencies',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html',1,'']]],
+  ['setting_20the_20compare_20match_20register_20for_20several_20frequencies_1',['Side Note: Setting the Compare Match Register for Several Frequencies',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html#autotoc_md11',1,'']]],
+  ['setting_20up_20for_201khz_20frequency_2',['Setting Up for 1kHz Frequency',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html#autotoc_md13',1,'']]],
+  ['several_20frequencies_3',['Side Note: Setting the Compare Match Register for Several Frequencies',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html#autotoc_md11',1,'']]],
+  ['side_20note_3a_20setting_20the_20compare_20match_20register_20for_20several_20frequencies_4',['Side Note: Setting the Compare Match Register for Several Frequencies',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html#autotoc_md11',1,'']]],
+  ['software_20requirements_5',['Software Requirements',['../md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e.html#autotoc_md4',1,'']]]
 ];
