@@ -124,4 +124,7 @@ Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt (
 
 In summary, setting the compare match register to the appropriate value based on the timer's clock frequency and desired output frequency is a key step in utilizing timers for precise timing operations in microcontrollers.
 
-This documentation should provide a clear understanding of how the sketch operates and how to use it for generating PWM signals with selectable frequencies.
+## Documentation
+
+The complete Doxygen-generated documentation for this project can be found at [BoschTestBench Documentation](https://aabdelghani.github.io/boschTestBench/). This documentation provides detailed insights into the structure and functionality of the code, making it easier for developers to understand and contribute to the project.
+
