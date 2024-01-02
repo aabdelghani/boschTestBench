@@ -67,6 +67,7 @@ These time periods represent the duration of one complete cycle of the PWM signa
 - The code is intended for Arduino Uno and similar AVR-based boards.
 
 
+
 ## Side Note: Setting the Compare Match Register for 1kHz Frequency
 
 The line in the code `// Set compare match register to desired timer count for 1kHz frequency` is a crucial part of setting up the Timer1 interrupt in the Arduino. Let's break down this concept for a clearer understanding.
@@ -77,12 +78,28 @@ The line in the code `// Set compare match register to desired timer count for 1
 
 **Compare Match Register (OCR1A):** The Output Compare Register for Timer1 (OCR1A in this case) is used to set a specific value at which the timer will trigger an action. When the timer's count matches the value in the OCR1A register, an interrupt can be generated (if enabled). This is known as a Compare Match.
 
+
 the line of code that sets the OCR1A register determines the desired frequency for the interrupt. Here's how it works for each frequency:
 
-### 1kHz Frequency
-- Prescaler: 8 (divides the 16MHz clock by 8, resulting in a 2MHz timer clock)
-- Calculation: `OCR1A = (2,000,000 / 1,000) - 1 = 1999`
+### Setting Up for 1kHz Frequency
 
+The Arduino Uno (and similar models) use a 16MHz clock. This is the base frequency from which the timer counts are derived.
+
+The line of code in question sets the OCR1A register to create a specific frequency for the interrupt. In this case, the goal is to achieve a frequency of 1 kHz (1,000 cycles per second).
+
+To calculate the value to load into OCR1A:
+
+1. **Choose a Prescaler:** A prescaler scales down the clock frequency. For instance, a prescaler of 8 will divide the 16MHz clock by 8, resulting in a 2MHz timer clock frequency.
+
+2. **Calculate the Timer Count:** The formula to calculate the value to be put into the OCR1A register for a desired frequency is:
+
+   OCR1A = (Timer Clock Frequency / Desired Interrupt Frequency) - 1
+
+3. **Apply the Formula:** For a 1kHz frequency with a 2MHz timer clock (after prescaling by 8), the calculation would be:
+
+   OCR1A = (2,000,000 / 1,000) - 1 = 1999
+
+   
 ### 2kHz Frequency
 - Prescaler: 8
 - Calculation: `OCR1A = (2,000,000 / 2,000) - 1 = 999`
