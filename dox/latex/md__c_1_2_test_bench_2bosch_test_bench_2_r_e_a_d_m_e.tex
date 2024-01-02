@@ -1,0 +1,71 @@
+\chapter{Arduino PWM Generation Using Timer1 with Selectable Frequencies}
+\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e}{}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e}\index{Arduino PWM Generation Using Timer1 with Selectable Frequencies@{Arduino PWM Generation Using Timer1 with Selectable Frequencies}}
+\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md0}%
+ \hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md1}
+This Arduino sketch is designed to generate a Pulse Width Modulation (PWM) signal using Timer1 interrupts. It features the ability to select predefined frequencies through preprocessor directives, allowing easy switching between different PWM frequencies. This method provides precise control over PWM signals, which is useful for a variety of applications including LED dimming, motor control, and signal generation.\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Hardware Requirements}{Hardware Requirements}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Arduino Uno or similar AVR-\/based board
+\item LED
+\item 220 Ohm resistor
+\item Breadboard and jumper wires
+\end{DoxyItemize}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Software Requirements}{Software Requirements}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Arduino IDE for uploading the sketch to the Arduino board
+\end{DoxyItemize}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{Configuration}{Configuration}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\bfseries{PWM Pin}}\+: The sketch uses digital pin 9 on the Arduino for PWM output. This pin is compatible with Timer1.
+\item {\bfseries{Predefined Frequencies}}\+: Frequencies are predefined as macros and can be selected by changing the {\ttfamily FREQUENCY} definition at the top of the sketch. Current predefined frequencies include 1k\+Hz, 2k\+Hz, and 5k\+Hz.
+\end{DoxyItemize}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{How to Use}{How to Use}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Connect the Hardware}}\+: Connect the LED and resistor in series between pin 9 and GND on the Arduino.
+\item {\bfseries{Set the Desired Frequency}}\+: Open the sketch in the Arduino IDE and set the desired frequency by changing the {\ttfamily \#define FREQUENCY} line to one of the predefined frequencies (e.\+g., {\ttfamily \#define FREQUENCY 1k\+Hz}).
+\item {\bfseries{Upload the Sketch}}\+: Connect the Arduino to your computer and upload the sketch using the Arduino IDE.
+\item {\bfseries{Observe the PWM Signal}}\+: Once uploaded, the connected LED will show the PWM effect at the selected frequency.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{Code Explanation}{Code Explanation}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item {\bfseries{Timer1 Setup}}\+: The sketch configures Timer1 in Clear Timer on Compare Match (CTC) mode. The compare match register (OCR1A) value is set based on the selected frequency. A prescaler of 8 is used to scale down the 16MHz clock.
+\item {\bfseries{Interrupt Service Routine (ISR)}}\+: The {\ttfamily TIMER1\+\_\+\+COMPA\+\_\+vect} ISR toggles the LED pin at each timer compare match, creating the PWM signal.
+\item {\bfseries{Frequency Selection}}\+: Use the {\ttfamily \#define FREQUENCY} directive to select the PWM frequency. The available options are set using individual {\ttfamily \#define} statements for each frequency.
+\item {\bfseries{Error Handling}}\+: If an undefined frequency is selected, the preprocessor generates a compile-\/time error.
+\end{DoxyItemize}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{Notes}{Notes}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item The frequency values are calculated assuming a 16MHz clock and an 8x prescaler. Adjust these values if using a different clock or prescaler.
+\item This code is intended for Arduino Uno and similar AVR-\/based boards. Other boards may require adjustments due to different timer configurations.
+\end{DoxyItemize}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{Limitations}{Limitations}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyItemize}
+\item The current setup allows for basic PWM control. For more complex applications, additional modifications might be necessary.
+\item The use of interrupts and timers may interfere with other time-\/dependent Arduino functions.
+\end{DoxyItemize}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Side Note\+: Setting the Compare Match Register for 1k\+Hz Frequency}{Side Note\+: Setting the Compare Match Register for 1k\+Hz Frequency}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md9}
+The line in the code {\ttfamily // Set compare match register to desired timer count for 1k\+Hz frequency} is a crucial part of setting up the Timer1 interrupt in the Arduino. Let\textquotesingle{}s break down this concept for a clearer understanding.\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{\texorpdfstring{Timer and Compare Match Register}{Timer and Compare Match Register}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md10}
+{\bfseries{Timer Functionality\+:}} In microcontrollers like the Arduino, timers are used for various time-\/related functions. They can be used for creating delays, measuring time intervals, generating signals, etc. Timers count up (or down) at a specific rate determined by the microcontroller\textquotesingle{}s clock frequency and the timer\textquotesingle{}s prescaler setting.
+
+{\bfseries{Compare Match Register (OCR1A)\+:}} The Output Compare Register for Timer1 (OCR1A in this case) is used to set a specific value at which the timer will trigger an action. When the timer\textquotesingle{}s count matches the value in the OCR1A register, an interrupt can be generated (if enabled). This is known as a Compare Match.\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{Setting Up for 1k\+Hz Frequency}{Setting Up for 1k\+Hz Frequency}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md11}
+The Arduino Uno (and similar models) use a 16MHz clock. This is the base frequency from which the timer counts are derived.
+
+The line of code in question sets the OCR1A register to create a specific frequency for the interrupt. In this case, the goal is to achieve a frequency of 1 k\+Hz (1,000 cycles per second).
+
+To calculate the value to load into OCR1A\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Choose a Prescaler\+:}} A prescaler scales down the clock frequency. For instance, a prescaler of 8 will divide the 16MHz clock by 8, resulting in a 2MHz timer clock frequency.
+\item {\bfseries{Calculate the Timer Count\+:}} The formula to calculate the value to be put into the OCR1A register for a desired frequency is\+:
+
+OCR1A = (Timer Clock Frequency / Desired Interrupt Frequency) -\/ 1
+\item {\bfseries{Apply the Formula\+:}} For a 1k\+Hz frequency with a 2MHz timer clock (after prescaling by 8), the calculation would be\+:
+
+OCR1A = (2,000,000 / 1,000) -\/ 1 = 1999
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{\texorpdfstring{What Happens at Runtime}{What Happens at Runtime}}\label{md__c_1_2_test_bench_2bosch_test_bench_2_r_e_a_d_m_e_autotoc_md12}
+Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt ({\ttfamily TIMER1\+\_\+\+COMPA\+\_\+vect}) is triggered. This creates a regular interrupt at a frequency of 1k\+Hz. Inside the ISR (Interrupt Service Routine), you can then implement functionality that needs to run at this frequency, like toggling an LED to create a PWM signal.
+
+In summary, setting the compare match register to the appropriate value based on the timer\textquotesingle{}s clock frequency and desired output frequency is a key step in utilizing timers for precise timing operations in microcontrollers.
+
+This documentation should provide a clear understanding of how the sketch operates and how to use it for generating PWM signals with selectable frequencies. 
