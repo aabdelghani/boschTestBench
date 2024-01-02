@@ -97,44 +97,6 @@ the line of code that sets the OCR1A register determines the desired frequency f
 
 These calculations ensure that the timer generates interrupts at the specified frequencies, creating the desired PWM signals.
 
-
-### Setting Up for 1kHz Frequency
-
-The Arduino Uno (and similar models) use a 16MHz clock. This is the base frequency from which the timer counts are derived.
-
-The line of code in question sets the OCR1A register to create a specific frequency for the interrupt. In this case, the goal is to achieve a frequency of 1 kHz (1,000 cycles per second).
-
-To calculate the value to load into OCR1A:
-
-1. **Choose a Prescaler:** A prescaler scales down the clock frequency. For instance, a prescaler of 8 will divide the 16MHz clock by 8, resulting in a 2MHz timer clock frequency.
-
-2. **Calculate the Timer Count:** The formula to calculate the value to be put into the OCR1A register for a desired frequency is:
-
-   OCR1A = (Timer Clock Frequency / Desired Interrupt Frequency) - 1
-
-3. **Apply the Formula:** For a 1kHz frequency with a 2MHz timer clock (after prescaling by 8), the calculation would be:
-
-   OCR1A = (2,000,000 / 1,000) - 1 = 1999
-
-
-### 2kHz Frequency
-
-For the 2kHz frequency, Timer1 counts to 999 (starting from 0), triggering the compare match interrupt (`TIMER1_COMPA_vect`). This results in an interrupt occurring at a frequency of 2kHz. Inside the ISR, you can implement tasks that need to run at this 2kHz frequency.
-
-By setting the compare match register to 999, the timer generates interrupts every 0.5 milliseconds (ms), creating a PWM signal with a 2kHz frequency.
-
-### 5kHz Frequency
-
-For the 5kHz frequency, Timer1 counts to 399 (starting from 0), triggering the compare match interrupt (`TIMER1_COMPA_vect`). This results in an interrupt occurring at a frequency of 5kHz. Inside the ISR, you can implement tasks that need to run at this 5kHz frequency.
-
-By setting the compare match register to 399, the timer generates interrupts every 0.2 milliseconds (ms), creating a PWM signal with a 5kHz frequency.
-
-### 0.5Hz Frequency
-
-For the 0.5Hz frequency, Timer1 counts to 19999 (starting from 0), triggering the compare match interrupt (`TIMER1_COMPA_vect`). This results in an interrupt occurring at a frequency of 0.5Hz (once every 2 seconds). Inside the ISR, you can implement tasks that need to run at this 0.5Hz frequency.
-
-By setting the compare match register to 19999, the timer generates interrupts every 2000 milliseconds (2 seconds), creating a PWM signal with a 0.5Hz frequency.
-
 ### What Happens at Runtime
 
 Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt (`TIMER1_COMPA_vect`) is triggered. This creates a regular interrupt at a frequency of 1kHz. Inside the ISR (Interrupt Service Routine), you can then implement functionality that needs to run at this frequency, like toggling an LED to create a PWM signal.
