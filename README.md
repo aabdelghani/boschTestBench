@@ -68,7 +68,7 @@ These time periods represent the duration of one complete cycle of the PWM signa
 
 
 
-## Side Note: Setting the Compare Match Register for 1kHz Frequency
+## Side Note: Setting the Compare Match Register for Several Frequencies
 
 The line in the code `// Set compare match register to desired timer count for 1kHz frequency` is a crucial part of setting up the Timer1 interrupt in the Arduino. Let's break down this concept for a clearer understanding.
 
