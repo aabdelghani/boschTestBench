@@ -11,9 +11,9 @@
 7. [Code Explanation](#code-explanation)
 8. [Notes](#notes)
 9. [Side Note: Setting the Compare Match Register for 1kHz Frequency](#side-note-setting-the-compare-match-register-for-1khz-frequency)
-*- [Timer and Compare Match Register](#timer-and-compare-match-register)*
-* - [1kHz Frequency](#1khz-frequency)*
-&nbsp; - [2kHz Frequency](#2khz-frequency)
+*- [Timer and Compare Match Register](#timer-and-compare-match-register)
+*- [1kHz Frequency](#1khz-frequency)
+*- [2kHz Frequency](#2khz-frequency)
 &nbsp; - [5kHz Frequency](#5khz-frequency)
 &nbsp; - [0.5Hz Frequency](#0.5hz-frequency)
 &nbsp; - [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
