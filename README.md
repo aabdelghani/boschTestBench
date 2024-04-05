@@ -1,25 +1,26 @@
 # Bosch Test Bench (Automotive)
 
-# Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Hardware Requirements](#hardware-requirements)
-3. [Software Requirements](#software-requirements)
-4. [Configuration](#configuration)
-5. [Frequency and Time Period Details](#frequency-and-time-period-details)
-6. [How to Use](#how-to-use)
-7. [Code Explanation](#code-explanation)
-8. [Notes](#notes)
-9. [Visual Representation](#visual-representation)
-10. [Side Note: Setting the Compare Match Register for 1kHz Frequency](#side-note-setting-the-compare-match-register-for-1khz-frequency)
-	- [Timer and Compare Match Register](#timer-and-compare-match-register)
-	- [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
-	- [2kHz Frequency](#2khz-frequency)
-	- [5kHz Frequency](#5khz-frequency)
-	- [0.5Hz Frequency](#0.5hz-frequency)
-	- [What Happens at Runtime](#what-happens-at-runtime)
+1. [Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies](#milestone-1-arduino-pwm-generation-using-timer1-with-selectable-frequencies)
+	- [Software Requirements](#software-requirements)
+	- [Configuration](#configuration)
+	- [Frequency and Time Period Details](#frequency-and-time-period-details)
+	- [How to Use](#how-to-use)
+	- [Code Explanation](#code-explanation)
+	- [Notes](#notes)
+	- [Visual Representation](#visual-representation)
+	- [Side Note: Setting the Compare Match Register for 1kHz Frequency](#side-note-setting-the-compare-match-register-for-1khz-frequency)
+	    - [Timer and Compare Match Register](#timer-and-compare-match-register)
+	    - [Setting Up for 1kHz Frequency](#setting-up-for-1khz-frequency)
+	    - [2kHz Frequency](#2khz-frequency)
+	    - [5kHz Frequency](#5khz-frequency)
+	    - [0.5Hz Frequency](#0.5hz-frequency)
+	    - [What Happens at Runtime](#what-happens-at-runtime)
+2. [Milestone 2: OBD 2 Scanner Integration and CAN Reading](#milestone-2-obd-2-scanner-integration-and-can-reading)
 
+
+## Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies
 
 ## Overview
 
@@ -125,7 +126,6 @@ Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt (
 
 In summary, setting the compare match register to the appropriate value based on the timer's clock frequency and desired output frequency is a key step in utilizing timers for precise timing operations in microcontrollers.
 
-# Bosch Test Bench (Automotive)
 
 ### Milestone 2: OBD 2 Scanner Integration and CAN Reading
 
@@ -141,7 +141,16 @@ This phase of the project focuses on integrating an OBD 2 scanner and reading CA
 
 ## Software Requirements
 
-- Arduino IDE for compiling and uploading the sketch to the Arduino board
+- Arduino IDE for compiling and uploading the sketch to the Arduino board.
+- Seeed Studio Arduino CAN Shield v2 library must be manually installed from its GitHub repository. Follow these steps to download and install the library:
+  1. Visit the GitHub repository at [Seeed Studio Arduino CAN](https://github.com/Seeed-Studio/Seeed_Arduino_CAN.git).
+  2. Download the library by clicking on the `Code` button and selecting `Download ZIP`.
+  3. Open the Arduino IDE.
+  4. Go to `Sketch` > `Include Library` > `Add .ZIP Library...`
+  5. Navigate to the downloaded `.zip` file, select it, and click on `Open` to install the library.
+
+After these steps, the Seeed Studio Arduino CAN library will be available in your Arduino IDE, allowing you to compile and upload sketches that communicate with the CAN Bus Shield v2.
+
 
 ## Configuration
 
