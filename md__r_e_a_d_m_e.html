@@ -191,8 +191,8 @@ Setting Up for 1kHz Frequency</h2>
 What Happens at Runtime</h2>
 <p>Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt (<code>TIMER1_COMPA_vect</code>) is triggered. This creates a regular interrupt at a frequency of 1kHz. Inside the ISR (Interrupt Service Routine), you can then implement functionality that needs to run at this frequency, like toggling an LED to create a PWM signal.</p>
 <p>In summary, setting the compare match register to the appropriate value based on the timer's clock frequency and desired output frequency is a key step in utilizing timers for precise timing operations in microcontrollers.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
-Milestone 2: OBD 2 Scanner Integration and CAN Reading</h2>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Milestone 2: OBD 2 Scanner Integration and CAN Reading</h1>
 <h1><a class="anchor" id="autotoc_md20"></a>
 Overview</h1>
 <p>This phase of the project focuses on integrating an OBD 2 scanner and reading CAN bus data using an Arduino Uno equipped with a CAN Bus Shield v2. The objective is to establish communication with a vehicle's OBD II interface, enabling the retrieval of real-time automotive diagnostics data over the CAN bus.</p>
