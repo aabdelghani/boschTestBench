@@ -127,7 +127,7 @@ Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt (
 In summary, setting the compare match register to the appropriate value based on the timer's clock frequency and desired output frequency is a key step in utilizing timers for precise timing operations in microcontrollers.
 
 
-### Milestone 2: OBD 2 Scanner Integration and CAN Reading
+## Milestone 2: OBD 2 Scanner Integration and CAN Reading
 
 ## Overview
 
