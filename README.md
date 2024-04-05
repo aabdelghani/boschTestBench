@@ -1,7 +1,7 @@
-# Arduino PWM Generation Using Timer1 with Selectable Frequencies
+# Bosch Test Bench (Automotive)
 
-# Table of Contents
-
+# Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies
+## Table of Contents
 
 1. [Overview](#overview)
 2. [Hardware Requirements](#hardware-requirements)
@@ -124,6 +124,63 @@ These calculations ensure that the timer generates interrupts at the specified f
 Each time Timer1 counts to 1999 (starting from 0), the compare match interrupt (`TIMER1_COMPA_vect`) is triggered. This creates a regular interrupt at a frequency of 1kHz. Inside the ISR (Interrupt Service Routine), you can then implement functionality that needs to run at this frequency, like toggling an LED to create a PWM signal.
 
 In summary, setting the compare match register to the appropriate value based on the timer's clock frequency and desired output frequency is a key step in utilizing timers for precise timing operations in microcontrollers.
+
+# Bosch Test Bench (Automotive)
+
+### Milestone 2: OBD 2 Scanner Integration and CAN Reading
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Hardware Requirements](#hardware-requirements)
+3. [Software Requirements](#software-requirements)
+4. [Configuration](#configuration)
+5. [How to Use](#how-to-use)
+6. [Code Explanation](#code-explanation)
+7. [Notes](#notes)
+
+## Overview
+
+This phase of the project focuses on integrating an OBD 2 scanner and reading CAN bus data using an Arduino Uno equipped with a CAN Bus Shield v2. The objective is to establish communication with a vehicle's OBD II interface, enabling the retrieval of real-time automotive diagnostics data over the CAN bus.
+
+## Hardware Requirements
+
+- Arduino Uno or similar AVR-based board
+- CAN Bus Shield v2 by Seeed Studio
+- DB9 to OBD2 Cable for connecting the CAN Bus Shield to a vehicle's OBD II port
+
+## Software Requirements
+
+- Arduino IDE for compiling and uploading the sketch to the Arduino board
+
+## Configuration
+
+The provided Arduino sketch is configured to work with the CAN Bus Shield v2 using the MCP2515 CAN controller. Key configuration details include:
+
+- **SPI CS (Chip Select) Pin**: Digital pin 9 is designated for the SPI CS, facilitating communication with the CAN Bus Shield.
+- **Interrupt Pin**: Digital pin 2 is used to handle interrupts from the CAN controller, enabling efficient data processing.
+- **CAN Bus Speed**: The CAN interface is initialized with a baud rate of 500Kbps, compatible with most automotive CAN networks.
+
+The sketch employs polling in the `loop()` function to check for incoming CAN frames, which are then processed and displayed via the serial monitor.
+
+## How to Use
+
+To use this setup for OBD II data reading:
+
+1. **Connect the Hardware**: Attach the CAN Bus Shield to the Arduino Uno and connect the DB9 to OBD2 cable from the shield to the vehicle's OBD II port.
+2. **Prepare the Software**: Open the Arduino IDE and navigate to the `OBD 2 scanner integration and CAN reading/OBD_2_scanner_integration_and_CAN_reading.ino` sketch.
+3. **Upload the Sketch**: Compile and upload the sketch to the Arduino Uno.
+4. **Run the System**: Power the Arduino and start the vehicle to begin data transmission. Open the Arduino IDE's serial monitor to view the read CAN data, including frame ID, type, and payload.
+
+## Code Explanation
+
+The sketch initializes the CAN interface, continuously monitors for incoming CAN frames, and prints each frame's details (ID, type, data) to the serial monitor. This is essential for debugging and understanding vehicle-to-device communication.
+
+## Notes
+
+- Ensure the vehicle supports OBD II and the CAN protocol for compatibility.
+- The baud rate and pin assignments may need adjustment based on your specific hardware configuration or if using a different Arduino model or CAN shield.
+
 
 ## Documentation
 
