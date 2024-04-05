@@ -167,7 +167,7 @@ The sketch employs polling in the `loop()` function to check for incoming CAN fr
 To use this setup for OBD II data reading:
 
 1. **Connect the Hardware**: Attach the CAN Bus Shield to the Arduino Uno and connect the DB9 to OBD2 cable from the shield to the vehicle's OBD II port.
-2. **Prepare the Software**: Open the Arduino IDE and navigate to the `OBD 2 scanner integration and CAN reading/OBD_2_scanner_integration_and_CAN_reading.ino` sketch.
+2. **Prepare the Software**: Open the Arduino IDE and navigate to the `OBD_2_scanner_integration_and_CAN_reading.ino/OBD_2_scanner_integration_and_CAN_reading.ino.ino` sketch.
 3. **Upload the Sketch**: Compile and upload the sketch to the Arduino Uno.
 4. **Run the System**: Power the Arduino and start the vehicle to begin data transmission. Open the Arduino IDE's serial monitor to view the read CAN data, including frame ID, type, and payload.
 
