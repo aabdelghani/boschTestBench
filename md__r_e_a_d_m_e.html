@@ -194,32 +194,21 @@ Bosch Test Bench (Automotive)</h1>
 <h3><a class="anchor" id="autotoc_md20"></a>
 Milestone 2: OBD 2 Scanner Integration and CAN Reading</h3>
 <h2><a class="anchor" id="autotoc_md21"></a>
-Table of Contents</h2>
-<ol type="1">
-<li><a href="#overview">Overview</a></li>
-<li><a href="#hardware-requirements">Hardware Requirements</a></li>
-<li><a href="#software-requirements">Software Requirements</a></li>
-<li><a href="#configuration">Configuration</a></li>
-<li><a href="#how-to-use">How to Use</a></li>
-<li><a href="#code-explanation">Code Explanation</a></li>
-<li><a href="#notes">Notes</a></li>
-</ol>
-<h2><a class="anchor" id="autotoc_md22"></a>
 Overview</h2>
 <p>This phase of the project focuses on integrating an OBD 2 scanner and reading CAN bus data using an Arduino Uno equipped with a CAN Bus Shield v2. The objective is to establish communication with a vehicle's OBD II interface, enabling the retrieval of real-time automotive diagnostics data over the CAN bus.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Hardware Requirements</h2>
 <ul>
 <li>Arduino Uno or similar AVR-based board</li>
 <li>CAN Bus Shield v2 by Seeed Studio</li>
 <li>DB9 to OBD2 Cable for connecting the CAN Bus Shield to a vehicle's OBD II port</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Software Requirements</h2>
 <ul>
 <li>Arduino IDE for compiling and uploading the sketch to the Arduino board</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 Configuration</h2>
 <p>The provided Arduino sketch is configured to work with the CAN Bus Shield v2 using the MCP2515 CAN controller. Key configuration details include:</p>
 <ul>
@@ -228,7 +217,7 @@ Configuration</h2>
 <li><b>CAN Bus Speed</b>: The CAN interface is initialized with a baud rate of 500Kbps, compatible with most automotive CAN networks.</li>
 </ul>
 <p>The sketch employs polling in the <code>loop()</code> function to check for incoming CAN frames, which are then processed and displayed via the serial monitor.</p>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 How to Use</h2>
 <p>To use this setup for OBD II data reading:</p>
 <ol type="1">
@@ -237,19 +226,19 @@ How to Use</h2>
 <li><b>Upload the Sketch</b>: Compile and upload the sketch to the Arduino Uno.</li>
 <li><b>Run the System</b>: Power the Arduino and start the vehicle to begin data transmission. Open the Arduino IDE's serial monitor to view the read CAN data, including frame ID, type, and payload.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Code Explanation</h2>
 <p>The sketch initializes the CAN interface, continuously monitors for incoming CAN frames, and prints each frame's details (ID, type, data) to the serial monitor. This is essential for debugging and understanding vehicle-to-device communication.</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Notes</h2>
 <ul>
 <li>Ensure the vehicle supports OBD II and the CAN protocol for compatibility.</li>
 <li>The baud rate and pin assignments may need adjustment based on your specific hardware configuration or if using a different Arduino model or CAN shield.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Documentation</h2>
 <p>The complete Doxygen-generated documentation for this project can be found at <a href="https://aabdelghani.github.io/boschTestBench/">BoschTestBench Documentation</a>. This documentation provides detailed insights into the structure and functionality of the code, making it easier for developers to understand and contribute to the project.</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 Automated Documentation</h2>
 <p>project uses GitHub Actions to automate the generation of Doxygen documentation. Whenever changes are pushed to the <code>main</code> branch, the documentation is automatically updated and deployed to the <code>gh-pages</code> branch. This ensures that our documentation is always current and can be easily accessed through our GitHub Pages site. </p>
 </div></div><!-- contents -->
