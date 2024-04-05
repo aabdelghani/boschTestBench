@@ -129,16 +129,6 @@ In summary, setting the compare match register to the appropriate value based on
 
 ### Milestone 2: OBD 2 Scanner Integration and CAN Reading
 
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Hardware Requirements](#hardware-requirements)
-3. [Software Requirements](#software-requirements)
-4. [Configuration](#configuration)
-5. [How to Use](#how-to-use)
-6. [Code Explanation](#code-explanation)
-7. [Notes](#notes)
-
 ## Overview
 
 This phase of the project focuses on integrating an OBD 2 scanner and reading CAN bus data using an Arduino Uno equipped with a CAN Bus Shield v2. The objective is to establish communication with a vehicle's OBD II interface, enabling the retrieval of real-time automotive diagnostics data over the CAN bus.
