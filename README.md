@@ -1,8 +1,8 @@
 # Bosch Test Bench (Automotive)
 
 ## Table of Contents
-
-1. [Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies](#milestone-1-arduino-pwm-generation-using-timer1-with-selectable-frequencies)
+1. [Milestone 2: OBD 2 Scanner Integration and CAN Reading](#milestone-2-obd-2-scanner-integration-and-can-reading)
+2. [Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies](#milestone-1-arduino-pwm-generation-using-timer1-with-selectable-frequencies)
 	- [Software Requirements](#software-requirements)
 	- [Configuration](#configuration)
 	- [Frequency and Time Period Details](#frequency-and-time-period-details)
@@ -17,7 +17,60 @@
 	    - [5kHz Frequency](#5khz-frequency)
 	    - [0.5Hz Frequency](#0.5hz-frequency)
 	    - [What Happens at Runtime](#what-happens-at-runtime)
-2. [Milestone 2: OBD 2 Scanner Integration and CAN Reading](#milestone-2-obd-2-scanner-integration-and-can-reading)
+
+
+## Milestone 2: OBD 2 Scanner Integration and CAN Reading
+
+## Overview
+
+This phase of the project focuses on integrating an OBD 2 scanner and reading CAN bus data using an Arduino Uno equipped with a CAN Bus Shield v2. The objective is to establish communication with a vehicle's OBD II interface, enabling the retrieval of real-time automotive diagnostics data over the CAN bus.
+
+## Hardware Requirements
+
+- Arduino Uno or similar AVR-based board
+- CAN Bus Shield v2 by Seeed Studio
+- DB9 to OBD2 Cable for connecting the CAN Bus Shield to a vehicle's OBD II port
+
+## Software Requirements
+
+- Arduino IDE for compiling and uploading the sketch to the Arduino board.
+- Seeed Studio Arduino CAN Shield v2 library must be manually installed from its GitHub repository. Follow these steps to download and install the library:
+  1. Visit the GitHub repository at [Seeed Studio Arduino CAN](https://github.com/Seeed-Studio/Seeed_Arduino_CAN.git).
+  2. Download the library by clicking on the `Code` button and selecting `Download ZIP`.
+  3. Open the Arduino IDE.
+  4. Go to `Sketch` > `Include Library` > `Add .ZIP Library...`
+  5. Navigate to the downloaded `.zip` file, select it, and click on `Open` to install the library.
+
+After these steps, the Seeed Studio Arduino CAN library will be available in your Arduino IDE, allowing you to compile and upload sketches that communicate with the CAN Bus Shield v2.
+
+
+## Configuration
+
+The provided Arduino sketch is configured to work with the CAN Bus Shield v2 using the MCP2515 CAN controller. Key configuration details include:
+
+- **SPI CS (Chip Select) Pin**: Digital pin 9 is designated for the SPI CS, facilitating communication with the CAN Bus Shield.
+- **Interrupt Pin**: Digital pin 2 is used to handle interrupts from the CAN controller, enabling efficient data processing.
+- **CAN Bus Speed**: The CAN interface is initialized with a baud rate of 500Kbps, compatible with most automotive CAN networks.
+
+The sketch employs polling in the `loop()` function to check for incoming CAN frames, which are then processed and displayed via the serial monitor.
+
+## How to Use
+
+To use this setup for OBD II data reading:
+
+1. **Connect the Hardware**: Attach the CAN Bus Shield to the Arduino Uno and connect the DB9 to OBD2 cable from the shield to the vehicle's OBD II port.
+2. **Prepare the Software**: Open the Arduino IDE and navigate to the `OBD_2_scanner_integration_and_CAN_reading.ino/OBD_2_scanner_integration_and_CAN_reading.ino.ino` sketch.
+3. **Upload the Sketch**: Compile and upload the sketch to the Arduino Uno.
+4. **Run the System**: Power the Arduino and start the vehicle to begin data transmission. Open the Arduino IDE's serial monitor to view the read CAN data, including frame ID, type, and payload.
+
+## Code Explanation
+
+The sketch initializes the CAN interface, continuously monitors for incoming CAN frames, and prints each frame's details (ID, type, data) to the serial monitor. This is essential for debugging and understanding vehicle-to-device communication.
+
+## Notes
+
+- Ensure the vehicle supports OBD II and the CAN protocol for compatibility.
+- The baud rate and pin assignments may need adjustment based on your specific hardware configuration or if using a different Arduino model or CAN shield.
 
 
 ## Milestone 1: Arduino PWM Generation Using Timer1 with Selectable Frequencies
