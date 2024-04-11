@@ -33,10 +33,10 @@ void setup() {
 }
 
 // Variables to store incoming CAN frame information
-uint32_t id;
+uint32_t id; // Variable to store the ID of the CAN frame
 uint8_t  type; // Stores frame properties: bit0 - extended frame, bit1 - remote transmission request
 uint8_t  len; // Data length
-byte cdata[MAX_DATA_SIZE] = {0}; // Data buffer
+byte cdata[MAX_DATA_SIZE] = {0}; // Data buffer to store the incoming data
 
 void loop() {
     // Check if a new CAN message is available
@@ -45,7 +45,7 @@ void loop() {
     }
 
     // Buffer to hold the formatted incoming data for serial output
-    char prbuf[32 + MAX_DATA_SIZE * 3];
+    char prbuf[32 + MAX_DATA_SIZE * 3]; // Buffer for printing formatted CAN data
     int i, n;
 
     // Fetch and format the current time since program start
@@ -54,16 +54,16 @@ void loop() {
 
     // Read the incoming message and store its ID and type
     CAN.readMsgBuf(&len, cdata); // Read data: len = data length, cdata = data buffer
-    id = CAN.getCanId();
-    type = (CAN.isExtendedFrame() << 0) | (CAN.isRemoteRequest() << 1);
+    id = CAN.getCanId(); // Fetch the ID of the received CAN frame
+    type = (CAN.isExtendedFrame() << 0) | (CAN.isRemoteRequest() << 1); // Determine frame type
 
     // Format message type and ID for serial output
-    static const byte type2[] = {0x00, 0x02, 0x30, 0x32};
+    static const byte type2[] = {0x00, 0x02, 0x30, 0x32}; // Mapping of type codes for display
     n += sprintf(prbuf + n, "RX: [%08lX](%02X) ", (unsigned long)id, type2[type]);
 
     // Append each byte of the CAN frame data to the output buffer
     for (i = 0; i < len; i++) {
-        n += sprintf(prbuf + n, "%02X ", cdata[i]);
+        n += sprintf(prbuf + n, "%02X ", cdata[i]); // Format and append data bytes
     }
     // Print the formatted data to the serial monitor
     SERIAL_PORT_MONITOR.println(prbuf);
